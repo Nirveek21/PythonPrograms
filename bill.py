@@ -31,7 +31,7 @@ class bill:
                 FR for Fried rice
                 BR for Biriyani : ''') 
             self.quantity= int(input('Enter quantity : '))
-            f.write( (data2[self.item] ) + ' ' + str(data[data2[self.item]]*self.quantity) )
+            f.write( (data2[self.item] ) + ' ' + str(data[data2[self.item]]*self.quantity) + '\n' )
             f.close()
             self.Temp=input('Want more ? Enter  Y for yes , N for no : ')
             if self.Temp=='N':

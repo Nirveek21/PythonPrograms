@@ -8,18 +8,18 @@ class bill:
              
     def getdata(self):
          data={
-             "Pepsi":10,
-             "Eggroll":30,
+             "Pepsi       ":10,
+             "Eggroll     ":30,
              "Chicken Roll":50,
-             "Fried Rice":100,
-             "Biriyani":150
+             "Fried Rice  ":100,
+             "Biriyani    ":150
             }
          data2={
-             "PP":"Pepsi",
-             "ER":"Eggroll",
+             "PP":"Pepsi       ",
+             "ER":"Eggroll     ",
              "CR":"Chicken Roll",
-             "FR":"Fried Rice",
-             "BR":"Biriyani"
+             "FR":"Fried Rice  ",
+             "BR":"Biriyani    "
             }
              
          while True:
@@ -31,7 +31,7 @@ class bill:
                 FR for Fried rice
                 BR for Biriyani : ''') 
             self.quantity= int(input('Enter quantity : '))
-            f.write( (data2[self.item] ) + ' ' + str(data[data2[self.item]]*self.quantity) + '\n' )
+            f.write( (data2[self.item] ) + '     ' + str(self.quantity) + '     ' + str(data[data2[self.item]]*self.quantity) + '\n' )
             f.close()
             self.Temp=input('Want more ? Enter  Y for yes , N for no : ')
             if self.Temp=='N':

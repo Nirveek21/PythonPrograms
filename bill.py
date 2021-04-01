@@ -4,8 +4,8 @@ class bill:
        self.data = { }
        self.data2 = { }
        self.item=0
-    
-             
+       self.quantity=0
+       self.total=0  
     def getdata(self):
          data={
              "Pepsi       ":10,
@@ -21,9 +21,10 @@ class bill:
              "FR":"Fried Rice  ",
              "BR":"Biriyani    "
             }
-             
+         f = open('bill.txt', 'w+' )
+         f.write('ITEM       QUANTITY     PRICE(RS) '+'\n')
+         f.write('--------------------------------------'+'\n')
          while True:
-            f = open('bill.txt', 'a' )
             self.item=input('''
                 Enter PP for Pepsi
                 ER for Eggroll
@@ -32,12 +33,17 @@ class bill:
                 BR for Biriyani : ''') 
             self.quantity= int(input('Enter quantity : '))
             f.write( (data2[self.item] ) + '     ' + str(self.quantity) + '     ' + str(data[data2[self.item]]*self.quantity) + '\n' )
-            f.close()
+            self.total += (data[data2[self.item]]*self.quantity)
             self.Temp=input('Want more ? Enter  Y for yes , N for no : ')
             if self.Temp=='N':
+                f.write('--------------------------------------'+'\n')
+                f.write('TOTAL IS                '+str(self.total))
+                f.close()
                 break
+         f= open('bill.txt', 'r')
+         print (f.read())
+         f.close()    
 
-    
 if __name__== "__main__":
     obj= bill()
     obj.getdata()

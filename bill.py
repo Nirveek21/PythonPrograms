@@ -1,8 +1,7 @@
+import datetime
 class bill:
     
     def __init__(self):
-       self.data = { }
-       self.data2 = { }
        self.item=0
        self.quantity=0
        self.total=0  
@@ -21,7 +20,10 @@ class bill:
              "FR":"Fried Rice  ",
              "BR":"Biriyani    "
             }
-         f = open('bill.txt', 'w+' )
+         self.x=datetime.datetime.now()
+         #self.x=str(self.x)+'.txt'
+         f= open(str(self.x), 'w+')
+         #f = open('bill.txt', 'w+' )
          f.write('ITEM       QUANTITY     PRICE(RS) '+'\n')
          f.write('--------------------------------------'+'\n')
          while True:
@@ -31,23 +33,28 @@ class bill:
                 CR for Chicken roll
                 FR for Fried rice
                 BR for Biriyani : ''') 
-            self.quantity= int(input('Enter quantity : '))
-            f.write( (data2[self.item] ) + '     ' + str(self.quantity) + '     ' + str(data[data2[self.item]]*self.quantity) + '\n' )
-            self.total += (data[data2[self.item]]*self.quantity)
-            self.Temp=input('Want more ? Enter  Y for yes , N for no : ')
-            if self.Temp=='N':
-                f.write('--------------------------------------'+'\n')
-                f.write('TOTAL IS                '+str(self.total))
-                f.close()
-                break
-         f= open('bill.txt', 'r')
+            if self.item.isupper()==False:
+                self.item=self.item.upper()
+            
+            if self.item in data2:        
+                self.quantity= int(input('Enter quantity : '))
+                f.write( (data2[self.item] ) + '     ' + str(self.quantity) + '     ' + str(data[data2[self.item]]*self.quantity) + '\n' )
+                self.total += (data[data2[self.item]]*self.quantity)
+                self.Temp=input('Want more ? Enter  Y for yes , N for no : ')
+                if self.Temp.isupper()==False:
+                    self.Temp=self.Temp.upper()
+           #print(self.Temp)    
+                if self.Temp=='N':
+                    f.write('--------------------------------------'+'\n')
+                    f.write('TOTAL IS                '+str(self.total))
+                    #f.close()
+                    break
+            else:
+                print('Item not found , Please Select form below list ')  
+         
          print (f.read())
          f.close()    
 
 if __name__== "__main__":
-    obj= bill()
+    obj = bill()
     obj.getdata()
-    
-    
-    
-       

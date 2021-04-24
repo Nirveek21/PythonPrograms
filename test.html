@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 text align="center">TO DO LIST</h1>
+    <div id="i1" text align="center">TASKS TO DO</div>
+    <div text align="center">    <button id="b1">Submit</button>
+        <button id="b2">DEL</button></div>
+
+</body>
+</html>
+<script> 
+var a = document.getElementById("i1");
+var b = document.getElementById("b1");
+var c=document.getElementById("b2");
+b.addEventListener("click",add);
+c.addEventListener("click",del)
+a.addEventListener("click",change)
+var f=1;
+   function add()
+   {
+       var para= document.createElement("div");
+      // var text= prompt("Enter task");
+       var t = document.createTextNode(prompt("Enter task"));
+       para.appendChild(t);
+       para.setAttribute("id",""+f);
+      //var x = document.createElement("BUTTON");
+       //var t1 = document.createTextNode("Click me");
+       //x.appendChild(t1);
+      //document.getElementById("i1").appendChild(x);
+       
+       f++;
+       a.appendChild(para);
+       //x.appendChild(t1);
+       
+   }
+   function change(){
+       a.style.backgroundColor ="red";
+   } 
+   
+       
+   
+   function del()
+   {
+       if(a.hasChildNodes())
+       {
+           a.removeChild(a.childNodes[1])
+       }
+   }
+   </script>
